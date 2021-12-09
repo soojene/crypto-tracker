@@ -1,5 +1,9 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import Router from "./Router";
+import { ReactQueryDevtools } from "react-query/devtools";
+import { lightTheme, theme } from './theme';
+import { useState } from 'react';
+
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -54,21 +58,45 @@ table {
   box-sizing: border-box;
 }
 body {
+  font-weight: 300;
   font-family: 'Source Sans Pro', sans-serif;
   background-color:${(props) => props.theme.bgColor};
-  color:${(props) => props.theme.textColor}
+  color:${(props) => props.theme.textColor};
+  line-height: 1.2;
 }
 a {
   text-decoration:none;
   color:inherit
 }
 `;
-
+const ModeBtn = styled.button`
+  position: absolute;
+  top:5px;
+  right:5px;
+  color: ${(props)=> props.theme.accentColor};
+  border-color: ${(props)=> props.theme.accentColor};
+  border: 1px solid;
+  border-radius: 20px;
+  background-color: transparent;
+  padding: 5px 20px;
+  cursor: pointer;
+  :hover{
+    background-color: #0000002d;
+  }
+`;
 function App() {
+  const [mode, setMode] = useState<boolean>(true);
+  const handleMode = ()=>{
+    setMode(mode? false : true);
+  }
   return (
     <>
+    < ThemeProvider theme={mode? theme : lightTheme}>
+      <ModeBtn onClick={handleMode}>Change Mode</ModeBtn>
       <GlobalStyle />
       <Router />
+      <ReactQueryDevtools initialIsOpen={true} />
+    </ThemeProvider>
     </>
   );
 }
