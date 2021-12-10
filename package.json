@@ -56,5 +56,6 @@
     "@types/react-query": "^1.2.9",
     "@types/styled-components": "^5.1.17"
   },
-  "homepage": "https://soojene.github.io/crypto-tracker"
+  "homepage": "https://soojene.github.io/crypto-tracker/"
 }
+              
