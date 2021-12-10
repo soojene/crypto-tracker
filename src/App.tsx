@@ -95,7 +95,7 @@ function App() {
       <ModeBtn onClick={handleMode}>Change Mode</ModeBtn>
       <GlobalStyle />
       <Router />
-      {/* <ReactQueryDevtools initialIsOpen={true} /> */}
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </ThemeProvider>
     </>
   );
