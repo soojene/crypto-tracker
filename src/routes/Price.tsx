@@ -1,6 +1,5 @@
 import { useQuery } from "react-query";
 import { fetchCoinHistory } from "../api";
-import ApexChart from "react-apexcharts";
 import styled from 'styled-components';
 
 const PriceBox = styled.ul`
