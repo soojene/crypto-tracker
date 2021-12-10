@@ -3,16 +3,22 @@ import { fetchCoinHistory } from "../api";
 import styled from 'styled-components';
 
 const PriceBox = styled.ul`
-    background-color:gray;
+    display: flex;
+    flex-direction:column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const PriceList = styled.li`
-    width:100%;
+    width:80%;
     display:flex;
+    border: gray solid 2px;
+    border-radius:20px;
     padding: 15px 25px;
     margin: 10px 0px;
     :hover{
         background-color:black;
+        color:white;
     }
 `;
 

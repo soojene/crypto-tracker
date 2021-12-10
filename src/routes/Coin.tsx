@@ -15,7 +15,8 @@ import Price from "./Price";
 
 const Title = styled.h1`
   font-size: 48px;
-  margin-right:80px;
+  font-weight:700;
+  margin-right:90px;
   color: ${(props) => props.theme.accentColor};
 `;
 
@@ -25,6 +26,8 @@ const Loader = styled.span`
 `;
 
 const Container = styled.div`
+  font-size: 20px;
+  font-weight:600;
   padding: 0px 20px;
   max-width: 480px;
   margin: 0 auto;
@@ -40,8 +43,9 @@ const Header = styled.header`
 const Overview = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.5);
+  /* background-color: rgba(0, 0, 0, 0.5); */
   padding: 10px 20px;
+  border: rgba(0, 0, 0, 0.5) solid 2px;
   border-radius: 10px;
 `;
 const OverviewItem = styled.div`
@@ -71,11 +75,13 @@ const Tab = styled.span<{ isActive: boolean }>`
   text-align: center;
   text-transform: uppercase;
   font-size: 12px;
-  font-weight: 400;
-  background-color: rgba(0, 0, 0, 0.5);
+  font-weight: 700;
+  /* background-color: rgba(0, 0, 0, 0.5); */
   border-radius: 10px;
-  color: ${(props) =>
+  color:${(props) =>
     props.isActive ? props.theme.accentColor : props.theme.textColor};
+  background-color: ${(props) =>
+    props.isActive ? props.theme.textColor : props.theme.accentColor};
   a {
     padding: 7px 0px;
     display: block;
@@ -159,8 +165,8 @@ interface PriceData {
 function Coin() {
   const { coinId } = useParams<RouteParams>();
   const { state } = useLocation<RouteState>();
-  const priceMatch = useRouteMatch("/:coinId/price");
-  const chartMatch = useRouteMatch("/:coinId/chart");
+  const priceMatch = useRouteMatch("/crypto-tracker/:coinId/price");
+  const chartMatch = useRouteMatch("/crypto-tracker/:coinId/chart");
   const { isLoading: infoLoading, data: infoData } = useQuery<InfoData>(
     ["info", coinId],
     () => fetchCoinInfo(coinId)
